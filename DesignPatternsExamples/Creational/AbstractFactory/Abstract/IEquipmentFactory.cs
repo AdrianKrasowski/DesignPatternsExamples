@@ -1,7 +1,4 @@
 ﻿using DesignPatternsExamples.Creational.AbstractFactory.Models.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DesignPatternsExamples.Creational.AbstractFactory.Abstract
 {

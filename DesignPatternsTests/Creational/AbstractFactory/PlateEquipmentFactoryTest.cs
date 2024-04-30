@@ -1,8 +1,6 @@
 ﻿using DesignPatternsExamples.Creational.AbstractFactory;
+using DesignPatternsExamples.Creational.AbstractFactory.Abstract;
 using DesignPatternsExamples.Creational.AbstractFactory.Models.Plate;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace DesignPatternsTests.Creational.AbstractFactory
@@ -13,7 +11,7 @@ namespace DesignPatternsTests.Creational.AbstractFactory
         public void CreateHelmetShouldReturnPlateHelmet()
         {
             //Arrange
-            var _uut = new PlateEquipmentFactory();
+            IEquipmentFactory _uut = new PlateEquipmentFactory();
 
             //Act
             var product = _uut.CreateHelmet(10, "PlateHelmet", "Some PlateHelmet");
@@ -26,7 +24,7 @@ namespace DesignPatternsTests.Creational.AbstractFactory
         public void CreateGauntletsShouldReturnGauntlets()
         {
             //Arrange
-            var _uut = new PlateEquipmentFactory();
+            IEquipmentFactory _uut = new PlateEquipmentFactory();
 
             //Act
             var product = _uut.CreateGauntlets(10, "Gauntlets", "Some Gauntlets");
@@ -39,7 +37,7 @@ namespace DesignPatternsTests.Creational.AbstractFactory
         public void CreateBodyShouldReturnPlateArmor()
         {
             //Arrange
-            var _uut = new PlateEquipmentFactory();
+            IEquipmentFactory _uut = new PlateEquipmentFactory();
 
             //Act
             var product = _uut.CreateBody(10, "PlateArmor", "Some PlateArmor");

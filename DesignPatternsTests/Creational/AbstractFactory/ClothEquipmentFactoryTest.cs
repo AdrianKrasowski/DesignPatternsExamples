@@ -1,8 +1,5 @@
 ﻿using DesignPatternsExamples.Creational.AbstractFactory;
 using DesignPatternsExamples.Creational.AbstractFactory.Models.Cloth;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace DesignPatternsTests.Creational.AbstractFactory
