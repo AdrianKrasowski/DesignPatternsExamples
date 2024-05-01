@@ -4,6 +4,7 @@
     {
         void Reset();
         void SetAccountId(int id);
+        void SetAccountBaseInfo();
         void SetAccountAddress();
         void SetAccountOrders();
     }

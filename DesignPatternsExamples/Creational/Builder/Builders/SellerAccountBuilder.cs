@@ -14,6 +14,11 @@ namespace DesignPatternsExamples.Creational.Builder.Builders
             throw new System.NotImplementedException();
         }
 
+        public void SetAccountBaseInfo()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void SetAccountId(int id)
         {
             throw new System.NotImplementedException();
