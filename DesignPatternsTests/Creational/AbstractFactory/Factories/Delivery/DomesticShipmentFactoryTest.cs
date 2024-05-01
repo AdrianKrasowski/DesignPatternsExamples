@@ -8,7 +8,7 @@ namespace DesignPatternsTests.Creational.AbstractFactory.Factories.Delivery
     public class DomesticShipmentFactoryTest
     {
         //Arrange
-        private IDeliveryFactory _uut = new DomesticShipmentFactory();
+        private readonly IDeliveryFactory _uut = new DomesticShipmentFactory();
         
         [Fact]
         public void DomesticShipmentyFactoryShouldReturnDomesticDeliveryRates()
