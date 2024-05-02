@@ -1,20 +1,25 @@
 ﻿using DesignPatternsExamples.Creational.Builder.Builders.Abstract;
 using DesignPatternsExamples.Creational.Builder.Directors.Abstract;
+using System;
 
 namespace DesignPatternsExamples.Creational.Builder.Directors
 {
     public class AccountWithAddressDirector : IAccountDirector
     {
-        public IAccountBuilder Builder { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public IAccountBuilder Builder { get ; private set ; }
 
         public void BuildAccount(int accountId)
         {
-            throw new System.NotImplementedException();
+            if (Builder == null)
+                throw new InvalidOperationException();
+            Builder.SetAccountId(accountId);
+            Builder.SetAccountBaseInfo();
+            Builder.SetAccountAddress();
         }
 
         public void SetBuilder(IAccountBuilder builder)
         {
-            throw new System.NotImplementedException();
+            Builder = builder;
         }
     }
 }
