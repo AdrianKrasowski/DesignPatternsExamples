@@ -50,6 +50,7 @@ namespace DesignPatternsExamples.Creational.Builder.Builders
             {
                 new Order
                 {
+                    Id = 2,
                     BuyerID = 2,
                     SellerID = _sellerAccount.Id,
                     Products = new List<Product>{

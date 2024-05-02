@@ -5,15 +5,15 @@ using DesignPatternsExamples.Creational.Builder.Model;
 
 namespace DesignPatternsTests.Creational.Builder.Builders
 {
-    public class BuyerAccountBuilderTests
+    public class SellerAccountBuilderTests
     {
 
         [Fact]
-        public void BuyerAccountBuilder_ShouldCorrectlySetAccountId_ForCorrectIdValues()
+        public void SellerAccountBuilder_ShouldCorrectlySetAccountId_ForCorrectIdValues()
         {
             //Arrange
             int accountId = 10;
-            BuyerAccountBuilder _uut = new BuyerAccountBuilder();
+            SellerAccountBuilder _uut = new SellerAccountBuilder();
 
             //Act
             _uut.SetAccountId(accountId);
@@ -25,12 +25,12 @@ namespace DesignPatternsTests.Creational.Builder.Builders
         }
 
         [Fact]
-        public void BuyerAccountBuilder_ShouldThrowException_IfInvalidIdPassed()
+        public void SellerAccountBuilder_ShouldThrowException_IfInvalidIdPassed()
         {
             //Arrange
             int accountId = -1;
             string expectedExceptionMessage = "Account Id cannot be lesser than 1";
-            BuyerAccountBuilder _uut = new BuyerAccountBuilder();
+            SellerAccountBuilder _uut = new SellerAccountBuilder();
 
             //Act   
             Action act = () => _uut.SetAccountId(accountId);
@@ -41,10 +41,10 @@ namespace DesignPatternsTests.Creational.Builder.Builders
         }
 
         [Fact]
-        public void BuyerAccountBuilder_ShouldThrowException_OnGetResult_IfIdIsNotSet()
+        public void SellerAccountBuilder_ShouldThrowException_OnGetResult_IfIdIsNotSet()
         {
             //Arrange
-            BuyerAccountBuilder _uut = new BuyerAccountBuilder();
+            SellerAccountBuilder _uut = new SellerAccountBuilder();
             string expectedExceptionMessage = "Build object is not initialized";
 
             //Act
@@ -57,16 +57,16 @@ namespace DesignPatternsTests.Creational.Builder.Builders
         }
 
         [Fact]
-        public void BuyerAccountBuilder_ShouldCorrectlySetAddress()
+        public void SellerAccountBuilder_ShouldCorrectlySetAddress()
         {
             //Arange
-            BuyerAccountBuilder _uut = new BuyerAccountBuilder();
+            SellerAccountBuilder _uut = new SellerAccountBuilder();
             int accountId = 1;
-            var expectedCity = "Balin";
-            var expectedStreet = "Some Street";
-            var expectedState = "Some Buyer State";
-            var expectedCountry = "Buyer Country";
-            var expectedPostalCode = "Buyer Postal Code";
+            var expectedCity = "City of Angels";
+            var expectedStreet = "Groove Street";
+            var expectedState = "Mazowsze";
+            var expectedCountry = "Poland";
+            var expectedPostalCode = "12345";
 
             //Act
             _uut.SetAccountId(1);
@@ -85,13 +85,14 @@ namespace DesignPatternsTests.Creational.Builder.Builders
         }
 
         [Fact]
-        public void BuyerAcoountBuilder_ShouldCorrectlySetBasicUserInfo()
+        public void SellerAcoountBuilder_ShouldCorrectlySetBasicUserInfo()
         {
             //Arrange
-            BuyerAccountBuilder _uut = new BuyerAccountBuilder();
+            SellerAccountBuilder _uut = new SellerAccountBuilder();
             int accountId = 1;
-            var expectedEmail = "My@mail.com";
-            var expectedName = "Buyer Name";
+            var expectedEmail = "Maciek@Maciek.pl";
+            var expectedName = "Maciek";
+            var expectedPhoneNumber = "+48 484848489";
 
             //Act
             _uut.SetAccountId(accountId);
@@ -103,19 +104,20 @@ namespace DesignPatternsTests.Creational.Builder.Builders
             Assert.Equal(accountId, result.Id);
             Assert.Equal(expectedName, result.Name);
             Assert.Equal(expectedEmail, result.Email);
+            Assert.Equal(expectedPhoneNumber, result.Phone);
         }
 
         [Fact]
-        public void BuyerAccountBuilder_ShouldCorrectlySetOrdersList() 
+        public void SellerAccountBuilder_ShouldCorrectlySetOrdersList()
         {
             //Arrange
-            BuyerAccountBuilder _uut = new BuyerAccountBuilder();
+            SellerAccountBuilder _uut = new SellerAccountBuilder();
             int accountId = 1;
-            var expectedOrder =new Order
+            var expectedOrder = new Order
             {
-                Id = 1,
-                BuyerID = accountId,
-                SellerID = 2,
+                Id = 2,
+                SellerID = accountId,
+                BuyerID = 2,
             };
             var firstExpectedProduct = new Product
             {
@@ -123,18 +125,12 @@ namespace DesignPatternsTests.Creational.Builder.Builders
                 Name = "Laptop",
                 Description = ""
             };
-            var secondExpectedProduct = new Product
-            {
-                Id = 2,
-                Name = "PC",
-                Description = "Personal Computer"
-            };
 
             //Act
             _uut.SetAccountId(accountId);
             _uut.SetAccountOrders();
             var result = _uut.GetResult();
-            
+
 
             //Assert
             Assert.NotNull(result);
@@ -145,25 +141,21 @@ namespace DesignPatternsTests.Creational.Builder.Builders
                 order =>
                 {
                     Assert.Equal(expectedOrder.Id, order.Id);
-                    Assert.Equal(expectedOrder.BuyerID, order.BuyerID);
                     Assert.Equal(expectedOrder.SellerID, order.SellerID);
+                    Assert.Equal(expectedOrder.BuyerID, order.BuyerID);
                     Assert.Collection(order.Products,
                         product =>
                         {
                             Assert.Equal(firstExpectedProduct.Id, product.Id);
                             Assert.Equal(firstExpectedProduct.Name, product.Name);
                             Assert.Equal(firstExpectedProduct.Description, product.Description);
-                        },
-                        product =>
-                        {
-                            Assert.Equal(secondExpectedProduct.Id, product.Id);
-                            Assert.Equal(secondExpectedProduct.Name, product.Name);
-                            Assert.Equal(secondExpectedProduct.Description, product.Description);
                         }
                     );
                 }
             );
             Assert.Equal(accountId, result.Id);
+
         }
+
     }
 }
