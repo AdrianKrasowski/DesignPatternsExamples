@@ -56,7 +56,9 @@ namespace DesignPatternsExamples.Creational.Builder.Builders
                         },
                         new Product
                         {
-
+                            Id = 2,
+                            Name = "PC",
+                            Description = "Personal Computer"
                         }
                     }
                    
