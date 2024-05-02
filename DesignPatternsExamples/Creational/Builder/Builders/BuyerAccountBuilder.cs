@@ -1,6 +1,7 @@
 ﻿using DesignPatternsExamples.Creational.Builder.Builders.Abstract;
 using DesignPatternsExamples.Creational.Builder.Model;
 using DesignPatternsExamples.Creational.Builder.Model.Accounts;
+using System;
 using System.Collections.Generic;
 
 namespace DesignPatternsExamples.Creational.Builder.Builders
@@ -35,6 +36,11 @@ namespace DesignPatternsExamples.Creational.Builder.Builders
 
         public void SetAccountId(int id)
         {
+
+            if (id <= 0)
+            {
+                throw new ArgumentException(); 
+            }
             _buyerAccount.Id = id;
         }
 
@@ -64,6 +70,15 @@ namespace DesignPatternsExamples.Creational.Builder.Builders
                    
                 }
             };
+        }
+
+        public BuyerAccount GetResult()
+        {
+            if (_buyerAccount?.Id != 0)
+            {
+                return _buyerAccount;
+            }
+            throw new InvalidOperationException();
         }
     }
 }

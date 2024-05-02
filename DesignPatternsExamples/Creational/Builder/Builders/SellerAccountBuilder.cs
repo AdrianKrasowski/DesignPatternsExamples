@@ -37,6 +37,10 @@ namespace DesignPatternsExamples.Creational.Builder.Builders
 
         public void SetAccountId(int id)
         {
+            if (id <= 0)
+            {
+                throw new ArgumentException();
+            }
             _sellerAccount.Id = id;
         }
 
@@ -59,6 +63,7 @@ namespace DesignPatternsExamples.Creational.Builder.Builders
                 }
             };
         }
+
         public SellerAccount GetResult()
         {
             if (_sellerAccount?.Id != 0)
