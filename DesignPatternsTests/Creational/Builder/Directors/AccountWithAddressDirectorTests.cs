@@ -2,14 +2,13 @@
 using DesignPatternsExamples.Creational.Builder.Directors;
 using System;
 using DesignPatternsExamples.Creational.Builder.Builders;
-using DesignPatternsExamples.Creational.Builder.Model;
 
 namespace DesignPatternsTests.Creational.Builder.Directors
 {
-    public class AccountWithAddressDirectorTest
+    public class AccountWithAddressDirectorTests
     {
         [Fact]
-        public void AccountWithAddressDirectorBuilder_ShouldThrowInvalidOperationException_IfNoBuilderProvided()
+        public void AccountWithAddressDirector_ShouldThrowInvalidOperationException_IfNoBuilderProvided()
         {
             //Arrange
             AccountWithAddressDirector _uut = new AccountWithAddressDirector();
@@ -25,7 +24,7 @@ namespace DesignPatternsTests.Creational.Builder.Directors
         }
 
         [Fact]
-        public void AccountWithAddressDirectorBuilder_ShouldBuildCorrectAccount_WithBuyerAccountBuilder()
+        public void AccountWithAddressDirector_ShouldBuildCorrectAccount_WithBuyerAccountBuilder()
         {
             //Arrange
             AccountWithAddressDirector _uut = new AccountWithAddressDirector();
@@ -56,10 +55,11 @@ namespace DesignPatternsTests.Creational.Builder.Directors
             Assert.Equal(expectedState, address.State);
             Assert.Equal(expectedCountry, address.Country);
             Assert.Equal(expectedPostalCode, address.PostalCode);
+            Assert.Null(result.Orders);
         }
 
         [Fact]
-        public void AccountWithAddressDirectorBuilder_ShouldBuildCorrectAccount_WithSellerAccountBuilder()
+        public void AccountWithAddressDirector_ShouldBuildCorrectAccount_WithSellerAccountBuilder()
         {
             //Arrange
             AccountWithAddressDirector _uut = new AccountWithAddressDirector();
@@ -92,6 +92,7 @@ namespace DesignPatternsTests.Creational.Builder.Directors
             Assert.Equal(expectedState, address.State);
             Assert.Equal(expectedCountry, address.Country);
             Assert.Equal(expectedPostalCode, address.PostalCode);
+            Assert.Null(result.Orders);
         }
     }
 }

@@ -83,6 +83,7 @@ namespace DesignPatternsTests.Creational.Builder.Builders
             Assert.Equal(expectedState, address.State);
             Assert.Equal(expectedCountry, address.Country);
             Assert.Equal(expectedPostalCode, address.PostalCode);
+            Assert.Null(result.Orders);
         }
 
         [Fact]
@@ -104,6 +105,8 @@ namespace DesignPatternsTests.Creational.Builder.Builders
             Assert.Equal(accountId, result.Id);
             Assert.Equal(expectedName, result.Name);
             Assert.Equal(expectedEmail, result.Email);
+            Assert.Null(result.Address);
+            Assert.Null(result.Orders);
         }
 
         [Fact]
@@ -165,6 +168,7 @@ namespace DesignPatternsTests.Creational.Builder.Builders
                 }
             );
             Assert.Equal(accountId, result.Id);
+            Assert.Null(result.Address);
         }
     }
 }
