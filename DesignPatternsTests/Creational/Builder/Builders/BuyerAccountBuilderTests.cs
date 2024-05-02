@@ -76,6 +76,7 @@ namespace DesignPatternsTests.Creational.Builder.Builders
 
             //Assert
             Assert.NotNull(result);
+            Assert.NotNull(result.Address);
             Assert.Equal(accountId, result.Id);
             Assert.Equal(expectedCity, address.City);
             Assert.Equal(expectedStreet, address.Street);

@@ -11,7 +11,7 @@ namespace DesignPatternsExamples.Creational.Builder.Directors
         public void BuildAccount(int accountId)
         {
             if (Builder == null)
-                throw new InvalidOperationException();
+                throw new InvalidOperationException("Builder not provided");
             Builder.SetAccountId(accountId);
             Builder.SetAccountBaseInfo();
             Builder.SetAccountAddress();
