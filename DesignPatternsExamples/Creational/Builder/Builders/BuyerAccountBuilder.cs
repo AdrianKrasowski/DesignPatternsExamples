@@ -8,7 +8,7 @@ namespace DesignPatternsExamples.Creational.Builder.Builders
 {
     public class BuyerAccountBuilder : IAccountBuilder
     {
-        private BuyerAccount _buyerAccount;
+        private BuyerAccount _buyerAccount = new BuyerAccount();
         public void Reset()
         {
             _buyerAccount = new BuyerAccount();
@@ -39,7 +39,7 @@ namespace DesignPatternsExamples.Creational.Builder.Builders
 
             if (id <= 0)
             {
-                throw new ArgumentException(); 
+                throw new ArgumentException("Account Id cannot be lesser than 1"); 
             }
             _buyerAccount.Id = id;
         }
@@ -78,7 +78,7 @@ namespace DesignPatternsExamples.Creational.Builder.Builders
             {
                 return _buyerAccount;
             }
-            throw new InvalidOperationException();
+            throw new InvalidOperationException("Build object is not initialized");
         }
     }
 }

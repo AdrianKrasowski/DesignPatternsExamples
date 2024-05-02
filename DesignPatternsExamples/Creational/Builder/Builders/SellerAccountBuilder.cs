@@ -39,7 +39,7 @@ namespace DesignPatternsExamples.Creational.Builder.Builders
         {
             if (id <= 0)
             {
-                throw new ArgumentException();
+                throw new ArgumentException("Account Id cannot be lesser than 1");
             }
             _sellerAccount.Id = id;
         }
@@ -70,7 +70,7 @@ namespace DesignPatternsExamples.Creational.Builder.Builders
             {
                 return _sellerAccount;
             }
-            throw new InvalidOperationException();
+            throw new InvalidOperationException("Build object is not initialized");
         }
     }
 }
