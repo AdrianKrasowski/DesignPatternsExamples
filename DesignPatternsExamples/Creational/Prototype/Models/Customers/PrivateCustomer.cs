@@ -12,7 +12,7 @@ namespace DesignPatternsExamples.Creational.Prototype.Models.Customers
             {
                 Name = Name,
                 Surname = Surname,
-                Address = new Address(Address.Street, Address.City, Address.Country),
+                Address = Address == null ? null : new Address(Address.Street, Address.City, Address.Country),
                 IsLegallyAdult = IsLegallyAdult
             };
             return clone;
