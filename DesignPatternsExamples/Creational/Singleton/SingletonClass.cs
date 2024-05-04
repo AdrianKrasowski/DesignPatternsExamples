@@ -2,13 +2,13 @@
 {
     public class SingletonClass
     {
-        private SingletonClass _instance = null;
+        private static SingletonClass _instance = null;
 
         private SingletonClass()
         {
         }
 
-        public SingletonClass GetInstance() 
+        public static SingletonClass GetInstance() 
         {
             if(_instance == null)
                 _instance = new SingletonClass();
